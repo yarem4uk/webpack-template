@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.ttf') format('truetape');
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  padding-top: 2rem;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+h1 {
+  text-align: center;
+}

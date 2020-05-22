@@ -1,0 +1,20 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "jquery": true
+  },
+    "parser": "babel-eslint",
+    "plugins": ["babel"],
+    "extends": ["airbnb-base", "prettier", "plugin:jest/recommended"],
+    "rules": {
+      "no-unused-vars": ["warn", { "vars": "local", "args": "none" }],
+      "no-console": "off",
+      "func-names": "off",
+      "class-methods-use-this": "off",
+      "no-underscore-dangle": "off",
+      "no-param-reassign": "off",
+      "semi": ["error", "never"]
+    }
+}
