@@ -6,5 +6,5 @@ watch:
 	npm run watch
 start:
 	npm run start
-stats:
+info:
 	npm run stats
