@@ -58,7 +58,7 @@ module.exports = {
   devtool: isDev ? 'source-map' : '',
 
   devServer: {
-    clientLogLevel: 'silent',
+    // clientLogLevel: 'silent',
     port: 4200,
     hot: isDev,
   },
