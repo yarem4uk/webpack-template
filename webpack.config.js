@@ -9,22 +9,19 @@ const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
 
 const optimization = () => {
-  const config =  {
+  const config = {
     splitChunks: {
       chunks: 'all',
-    }
+    },
   }
 
   if (isProd) {
-    config.minimizer = [
-      new OptimizeCss(),
-      new TerserPlugin(),
-    ]
+    config.minimizer = [new OptimizeCss(), new TerserPlugin()]
   }
-  return config 
+  return config
 }
 
-const filename = (ext) => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`)
 
 const cssLoader = (extra) => {
   const loaders = [
@@ -33,9 +30,9 @@ const cssLoader = (extra) => {
       options: {
         hmr: isDev,
         reloadAll: true,
-      }
+      },
     },
-    'css-loader'
+    'css-loader',
   ]
 
   if (extra) {
@@ -44,7 +41,6 @@ const cssLoader = (extra) => {
 
   return loaders
 }
-
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -62,6 +58,7 @@ module.exports = {
   devtool: isDev ? 'source-map' : '',
 
   devServer: {
+    clientLogLevel: 'silent',
     port: 4200,
     hot: isDev,
   },
@@ -72,11 +69,11 @@ module.exports = {
       minify: {
         collapseWhitespace: isProd,
       },
-    }),     
+    }),
     new CleanWebpackPlugin(),
     new MiniCss({
       filename: filename('css'),
-    })
+    }),
   ],
 
   module: {
@@ -88,7 +85,7 @@ module.exports = {
 
       {
         test: /\.s[ac]ss$/,
-        use: cssLoader('sass-loader')
+        use: cssLoader('sass-loader'),
       },
 
       {
@@ -101,6 +98,6 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
-    ]
-  }
+    ],
+  },
 }
